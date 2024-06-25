@@ -8,8 +8,14 @@ def main():
     start = input("Start node: ").strip()
     goal = input("Destination: ").strip()
     
-    if start not in graph or goal not in graph:
-        print("Invalid start or destination node.")
+    if start not in graph and goal not in graph:
+        print("Invalid start and destination node.")
+        return
+    elif start not in graph:
+        print("Invalid start node.")
+        return
+    elif goal not in graph:
+        print("Invalid destination node.")
         return
     
     path, total_distance = a_star_search(graph, heuristics, start, goal)
