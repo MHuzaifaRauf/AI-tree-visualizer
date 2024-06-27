@@ -24,7 +24,7 @@ def main():
     # print("DEBUG: Total distance:", total_distance)
     
     if path:
-        if path[0] is None or None in path[1:]:
+        if None in path:
             print("NO PATH FOUND")
         else:
             print(f"Path: {' -> '.join(path)}")

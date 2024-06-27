@@ -8,8 +8,8 @@ Mehadia 241 Lugoj 70 Drobeta 75
 Drobeta 242 Mehadia 75 Craiova 120
 Craiova 160 Drobeta 120 Rimnicu 146 Pitesti 138
 Rimnicu 193 Sibiu 80 Craiova 146 Pitesti 97
-Fagaras 176 Sibiu 99 Bucharest 211
-Pitesti 100 Rimnicu 97 Craiova 138 Bucharest 101
+Fagaras 178 Sibiu 99 Bucharest 211
+Pitesti 98 Rimnicu 97 Craiova 138 Bucharest 101
 Bucharest 0 Pitesti 101 Fagaras 211 Giurgiu 90 Urziceni 85
 Giurgiu 77 Bucharest 90
 Urziceni 80 Bucharest 85 Hirsova 98 Vaslui 142
