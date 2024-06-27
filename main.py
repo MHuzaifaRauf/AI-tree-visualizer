@@ -5,8 +5,8 @@ def main():
     file_path = 'cities.txt'
     graph, heuristics = read_graph(file_path)
     
-    start = input("Start node: ").strip()
-    goal = input("Destination: ").strip()
+    start = input("Start node: ").strip().capitalize()
+    goal = input("Destination: ").strip().capitalize()
     
     if start not in graph and goal not in graph:
         print("Invalid start and destination node.")
