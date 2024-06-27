@@ -158,12 +158,6 @@ The `main.py` script is the entry point of the program. It:
 - Python 3.x
 - `simpleai` library
 
-You can install the dependencies using the following command:
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
