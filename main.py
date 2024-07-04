@@ -20,8 +20,6 @@ def main():
     
     path, total_distance = a_star_search(graph, heuristics, start, goal)
     
-    # print("DEBUG: Path:", path)
-    # print("DEBUG: Total distance:", total_distance)
     
     if path:
         if None in path:
