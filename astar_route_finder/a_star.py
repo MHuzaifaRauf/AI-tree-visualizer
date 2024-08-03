@@ -1,5 +1,6 @@
 from simpleai.search import astar, SearchProblem
 
+
 class FlightProblem(SearchProblem):
     def __init__(self, graph, heuristics, start, goal):
         self.graph = graph
@@ -21,7 +22,6 @@ class FlightProblem(SearchProblem):
 
     def heuristic(self, state):
         return self.heuristics[state]
-
 
 def a_star_search(graph, heuristics, start, goal):
     problem = FlightProblem(graph, heuristics, start, goal)

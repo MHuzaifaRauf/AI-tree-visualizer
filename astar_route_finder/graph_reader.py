@@ -3,7 +3,6 @@ def read_graph(file_path):
     heuristics = {}
 
     with open(file_path, 'r') as file:
-        
         for line in file:
             parts = line.split()
             node = parts[0]
