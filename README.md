@@ -1,6 +1,9 @@
+Sure! Here's an updated version of the README file that includes information about the Alpha-Beta Pruning implementation:
+
+```markdown
 # AI Algorithm Visualizer
 
-This project implements and visualizes two important AI algorithms: A* search for route finding and Minimax for decision making. Both algorithms are equipped with graphical user interfaces (GUIs) for enhanced user interaction and visualization.
+This project implements and visualizes three important AI algorithms: A* search for route finding, Minimax for decision making, and Alpha-Beta Pruning for optimized decision making in game trees. All algorithms are equipped with graphical user interfaces (GUIs) for enhanced user interaction and visualization.
 
 ## Features
 
@@ -17,6 +20,12 @@ This project implements and visualizes two important AI algorithms: A* search fo
 - Allows users to create and manipulate decision trees.
 - Provides a GUI for tree creation, visualization, and algorithm execution.
 - Displays the Minimax values and optimal decisions at each node.
+
+### Alpha-Beta Pruning
+- Implements the Alpha-Beta Pruning algorithm to optimize the Minimax decision-making process.
+- Reduces the number of nodes evaluated in the decision tree.
+- Provides a GUI for tree creation, visualization, and algorithm execution.
+- Displays the Minimax values and optimal decisions at each node with pruning.
 
 ## Getting Started
 
@@ -50,10 +59,11 @@ pip install -r requirements.txt
 
 Prepare your city data file (`cities.txt`) in the `astar_route_finder` directory. The file format should be as follows:
 
-
+```
 Arad 366 Zerind 75 Sibiu 140 Timisoara 118
 Zerind 374 Arad 75 Oradea 71
 ...
+```
 
 ### Running the A* Route Finder GUI
 
@@ -77,6 +87,18 @@ python main.py
 
 Use the GUI to create a decision tree, set node values, and visualize the Minimax algorithm's execution.
 
+## Alpha-Beta Pruning
+
+### Running the Alpha-Beta Pruning GUI
+
+Navigate to the `alpha-beta-pruning` directory and run:
+
+```bash
+python main.py
+```
+
+Use the GUI to create a decision tree, set node values, and visualize the Alpha-Beta Pruning algorithm's execution.
+
 ## File Structure
 
 - `astar_route_finder/`
@@ -88,9 +110,14 @@ Use the GUI to create a decision tree, set node values, and visualize the Minima
 
 - `minimax/`
   - `main.py`: Entry point for the Minimax GUI.
-  - `minimax_tree_gui.py`: Implements the GUI for the Minimax tree.
+  - `minimax_tree.py`: Implements the GUI for the Minimax tree and Handles tree visualization
   - `node.py`: Defines the tree node structure.
-  - `tree_visualization.py`: Handles tree visualization.
+
+
+- `alpha-beta-pruning/`
+  - `main.py`: Entry point for the Alpha-Beta Pruning GUI.
+  - `node.py`: Defines the tree node structure.
+  - `alpha_beta_tree_gui.py`: Implements the Alpha-Beta Pruning algorithms.
 
 - `requirements.txt`: List of Python dependencies.
 
@@ -103,3 +130,6 @@ Use the GUI to create a decision tree, set node values, and visualize the Minima
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+```
+
+This updated README file now includes a section for the Alpha-Beta Pruning implementation, providing users with information on how to run and use the new feature.
