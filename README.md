@@ -1,6 +1,3 @@
-Sure! Here's an updated version of the README file that includes information about the Alpha-Beta Pruning implementation:
-
-```markdown
 # AI Algorithm Visualizer
 
 This project implements and visualizes three important AI algorithms: A* search for route finding, Minimax for decision making, and Alpha-Beta Pruning for optimized decision making in game trees. All algorithms are equipped with graphical user interfaces (GUIs) for enhanced user interaction and visualization.
@@ -130,6 +127,3 @@ Use the GUI to create a decision tree, set node values, and visualize the Alpha-
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
-```
-
-This updated README file now includes a section for the Alpha-Beta Pruning implementation, providing users with information on how to run and use the new feature.
