@@ -1,15 +1,14 @@
-import sys
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QBrush, QPen
+from PyQt5.QtGui import QPen
 from PyQt5.QtCore import Qt
 from node import Node
-from tree_visualization import create_minimax_tree, compute_minimax
 
 class MinimaxTreeGUI(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
-        self.cancel_flag = False
+        self.cancel_flag = False  # Flag to indicate if the process should be canceled
+        self.final_path = []  # List to store the final path
 
     def initUI(self):
         self.setWindowTitle('Minimax Tree Visualization')
@@ -38,13 +37,23 @@ class MinimaxTreeGUI(QWidget):
 
     def createTree(self):
         self.scene.clear()
-        self.cancel_flag = False
+        self.cancel_flag = False  # Reset the cancel flag
+        self.final_path = []  # Reset the final path
         depth = int(self.depthInput.text())
-        self.root = create_minimax_tree(depth)
+        self.root = self.createMinimaxTree(depth)
         self.getLeafValues(self.root)
         if not self.cancel_flag:
-            _, self.path = compute_minimax(self.root, True)
-            self.visualizeTree(self.root, depth, path=self.path)
+            _, self.path = self.computeMinimax(self.root, True)
+            self.storeFinalPath(self.root)
+            self.visualizeTree(self.root, depth)
+
+    def createMinimaxTree(self, depth):
+        if depth == 0:
+            return Node()
+        node = Node()
+        node.left = self.createMinimaxTree(depth - 1)
+        node.right = self.createMinimaxTree(depth - 1)
+        return node
 
     def getLeafValues(self, node):
         if self.cancel_flag:
@@ -61,7 +70,39 @@ class MinimaxTreeGUI(QWidget):
         if node.right:
             self.getLeafValues(node.right)
 
-    def visualizeTree(self, node, depth, x=400, y=50, dx=200, path=''):
+    def computeMinimax(self, node, is_max):
+        if node.left is None and node.right is None:
+            return node.value, None
+
+        left_value, _ = self.computeMinimax(node.left, not is_max)
+        right_value, _ = self.computeMinimax(node.right, not is_max)
+
+        if is_max:
+            if left_value >= right_value:
+                node.value = left_value
+                return node.value, 'left'
+            else:
+                node.value = right_value
+                return node.value, 'right'
+        else:
+            if left_value <= right_value:
+                node.value = left_value
+                return node.value, 'left'
+            else:
+                node.value = right_value
+                return node.value, 'right'
+
+    def storeFinalPath(self, node):
+        if node is None:
+            return
+        if node.left and node.left.value == node.value:
+            self.final_path.append(node.left)
+            self.storeFinalPath(node.left)
+        elif node.right and node.right.value == node.value:
+            self.final_path.append(node.right)
+            self.storeFinalPath(node.right)
+
+    def visualizeTree(self, node, depth, x=400, y=50, dx=200):
         if node is None:
             return
 
@@ -81,18 +122,18 @@ class MinimaxTreeGUI(QWidget):
 
         if node.left:
             line = QGraphicsLineItem(x + 15, y + 30, x - dx + 15, y + 80)
-            if path == 'left':
-                line.setPen(QPen(Qt.red, 2))
+            if node.left in self.final_path:
+                line.setPen(QPen(Qt.green))
             else:
                 line.setPen(pen)
             self.scene.addItem(line)
-            self.visualizeTree(node.left, depth - 1, x - dx, y + 80, dx // 2, 'left' if path == 'left' else '')
+            self.visualizeTree(node.left, depth - 1, x - dx, y + 80, dx // 2)
 
         if node.right:
             line = QGraphicsLineItem(x + 15, y + 30, x + dx + 15, y + 80)
-            if path == 'right':
-                line.setPen(QPen(Qt.red, 2))
+            if node.right in self.final_path:
+                line.setPen(QPen(Qt.green))
             else:
                 line.setPen(pen)
             self.scene.addItem(line)
-            self.visualizeTree(node.right, depth - 1, x + dx, y + 80, dx // 2, 'right' if path == 'right' else '')
+            self.visualizeTree(node.right, depth - 1, x + dx, y + 80, dx // 2)
